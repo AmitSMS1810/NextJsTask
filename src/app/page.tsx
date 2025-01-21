@@ -1,95 +1,115 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import React from 'react';
+import { AppBar, Toolbar, Typography, Box, Grid, IconButton, Avatar, Container } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 
-export default function Home() {
+const ResponsiveLayout = () => {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <Container sx={{mt:'4'}} >
+      <Box>
+        {/* Navbar */}
+        <AppBar
+          position="static"
+          sx={{
+            bgcolor: 'white',
+            color: 'black',
+            boxShadow: 1,
+            border: 2, 
+            borderColor: 'green', 
+            px: { xs: 0, sm: 8 }
+            
+          }}
+        >
+          <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            {/* Brand Name */}
+            <Box sx={{display:'flex', flexDirection:'row', gap: '40px'}}>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+            <Typography variant="h6">Brand Name</Typography>
+
+            {/* Search Input (Centered) */}
+            <Box
+              sx={{                
+                display: { xs: 'none', sm: 'flex' },
+                alignItems: 'center',
+                border: 2,
+                bgcolor: '#f1f1f1',
+                borderRadius: 1,
+                width: 350, 
+              }}
+            >
+              <input
+                type="text"
+                placeholder="Search..."
+                style={{
+                  padding: '8px',
+                  border: 'none',
+                  outline: 'none',
+                  background: 'transparent',
+                  flex: 1,
+                }}
+              />
+              <IconButton type="button" sx={{ p: '8px' }}>
+                <SearchIcon />
+              </IconButton>
+            </Box>
+            </Box>
+
+          
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <Avatar sx={{ ml: 2 }}>J</Avatar>
+              <Typography sx={{ display: { xs: 'none', sm: 'block' }, ml: 1 }}>John</Typography>
+            </Box>
+          </Toolbar>
+        </AppBar>
+
+        {/* Main Content */}
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column', 
+            border: 2,
+            borderTop: 0,
+            borderColor: 'black',
+            
+            minHeight: '80vh', 
+          }}
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          <Container>
+            <Grid container spacing={7} justifyContent="center">
+              {/* Left Section */}
+              <Grid item xs={12} sm={5}>
+                <Box
+                  sx={{
+                    height: '700px',
+                    bgcolor: '#f5f5f5',
+                    border: 2,
+                    borderColor: 'blue', 
+                    borderRadius: 1,
+                    mt: 1
+                  
+                  }}
+                ></Box>
+              </Grid>
+              {/* Right Section */}
+              <Grid item xs={12} sm={4}>
+                <Box
+                  sx={{
+                    height: '650px',
+                    bgcolor: '#f5f5f5',
+                    border: 2, 
+                    borderColor: 'blue',
+                    borderRadius: 1,
+                    mt: 2
+                  }}
+                ></Box>
+              </Grid>
+            </Grid>
+          </Container>
+        </Box>
+      </Box>
+    </Container>
   );
-}
+};
+
+export default ResponsiveLayout;
